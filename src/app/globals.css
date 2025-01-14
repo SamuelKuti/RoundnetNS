@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 :root {
+  --primary-blue: #1e40af;
+  --secondary-blue: #3b82f6;
+  --primary-yellow: #fbbf24;
+  --secondary-yellow: #fcd34d;
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -10,5 +14,19 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Animation classes */
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.fade-in {
+  @apply animate-[fadeIn_0.5s_ease-in];
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
