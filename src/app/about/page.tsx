@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { TeamMemberProps, ValueCardProps } from '@/types';
 
 const fadeIn = {
   initial: { opacity: 0 },
@@ -167,7 +168,7 @@ export default function About() {
   );
 }
 
-const TeamMember = ({ name, role, image, description }) => (
+const TeamMember: React.FC<TeamMemberProps> = ({ name, role, image, description }) => (
   <div className="bg-white rounded-lg shadow-lg overflow-hidden hover-scale">
     <div className="aspect-w-1 aspect-h-1 relative">
       <Image
@@ -186,7 +187,7 @@ const TeamMember = ({ name, role, image, description }) => (
   </div>
 );
 
-const ValueCard = ({ title, description, image }) => (
+const ValueCard: React.FC<ValueCardProps> = ({ title, description, image }) => (
   <div className="relative overflow-hidden rounded-lg shadow-lg hover-scale group h-64">
     <Image
       src={image}

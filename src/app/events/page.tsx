@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { TabButtonProps, EventCardProps } from '@/types';
 
 const fadeIn = {
   initial: { opacity: 0 },
@@ -16,7 +17,7 @@ const slideUp = {
   transition: { duration: 0.5 }
 };
 
-const TabButton = ({ active, children, onClick }) => (
+const TabButton: React.FC<TabButtonProps> = ({ active, children, onClick }) => (
   <motion.button
     className={`px-6 py-2 rounded-full transition-colors duration-200 ${
       active ? 'bg-primary-blue text-white' : 'text-gray-600 hover:bg-gray-200'
@@ -29,9 +30,9 @@ const TabButton = ({ active, children, onClick }) => (
   </motion.button>
 );
 
-const EventCard = ({ title, date, location, description, status, image, index }) => {
+const EventCard: React.FC<EventCardProps> = ({ title, date, location, description, status, image, index }) => {
   // Helper function to get status styles
-  const getStatusStyles = (status) => {
+  const getStatusStyles = (status: string) => {
     switch (status) {
       case 'open':
         return {
@@ -112,10 +113,10 @@ const EventCard = ({ title, date, location, description, status, image, index })
 };
 
 export default function Events() {
-  const [selectedTab, setSelectedTab] = useState('upcoming');
-  const [isLoading, setIsLoading] = useState(false);
+  const [selectedTab, setSelectedTab] = useState<'upcoming' | 'past'>('upcoming');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = (tab: 'upcoming' | 'past') => {
     setSelectedTab(tab);
   };
 

@@ -2,7 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
+import { ContactInfoProps } from '@/types';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -10,7 +11,7 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 };
 
-const ContactInfo = ({ title, info, icon, index }) => (
+const ContactInfo: React.FC<ContactInfoProps> = ({ title, info, icon, index }) => (
   <motion.div 
     className="bg-gray-50 p-6 rounded-lg transform hover:-translate-y-1 transition-all duration-300"
     variants={fadeInUp}
@@ -23,13 +24,12 @@ const ContactInfo = ({ title, info, icon, index }) => (
 );
 
 export default function Contact() {
-  const [formStatus, setFormStatus] = useState('idle');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     setFormStatus('success');
     setIsSubmitting(false);
@@ -57,7 +57,7 @@ export default function Contact() {
         </div>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 mt-10">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div 
