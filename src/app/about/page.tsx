@@ -25,21 +25,14 @@ export default function About() {
         animate="animate"
         variants={fadeIn}
       >
-        <Image
-          src="/about-hero.jpg"
-          alt="Roundnet community gathering"
-          width={1200}
-          height={400}
-          className="rounded-lg shadow-lg mb-8"
-        />
         <motion.h1 
-          className="text-4xl md:text-5xl font-bold text-primary-blue mb-6 text-center"
+          className="text-4xl md:text-5xl font-bold text-primary-blue mt-16 text-center"
           variants={slideIn}
         >
           About RoundnetNS
         </motion.h1>
         <motion.p 
-          className="text-xl text-gray-600 text-center max-w-3xl mx-auto"
+          className="text-xl text-gray-600 text-center max-w-3xl mt-4 mx-auto"
           variants={slideIn}
         >
           Building and growing the Roundnet community across Nova Scotia since 2023
@@ -92,26 +85,27 @@ export default function About() {
         >
           Meet Our Team
         </motion.h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid mx-4 md:mx-0 md:grid-cols-3 gap-8">
           {[
             {
-              name: "John Smith",
+              name: "Samuel Kuti",
               role: "President",
-              image: "/team-member-1.jpg",
-              description: "Roundnet enthusiast since 2018, focused on growing the sport in Halifax."
+              image: "/sam-photo.jpg",
+              description: "Roundnet enthusiast since 2020, focused on growing the sport in Nova Scotia."
             },
             {
-              name: "Sarah Johnson",
+                name: "Taiki Kawano",
+                role: "Vice President",
+                image: "/taiki-photo.jpg",
+                description: "Assisting in the growth of roundnet across the province."
+            },
+            {
+              name: "Jaak Reichman",
               role: "Events Coordinator",
-              image: "/team-member-2.jpg",
-              description: "Organizing tournaments and weekly meetups across the province."
+              image: "/jaak-photo.jpg",
+              description: "Organizing fun tournaments across the province."
             },
-            {
-              name: "Mike Williams",
-              role: "Community Manager",
-              image: "/team-member-3.jpg",
-              description: "Ensuring our community stays connected and engaged."
-            }
+            
           ].map((member, index) => (
             <motion.div
               key={member.name}
@@ -146,11 +140,11 @@ export default function About() {
         <h2 className="text-3xl font-bold text-primary-blue mb-12 text-center">
           Our Values
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:mx-0 mx-4 md:grid-cols-2 gap-8">
           <ValueCard 
             title="Community First"
             description="We believe in building a strong, supportive community where everyone feels welcome."
-            image="/community-value.jpg"
+            image="/growth-value.jpg"
           />
           <ValueCard 
             title="Inclusivity"
@@ -160,12 +154,12 @@ export default function About() {
           <ValueCard 
             title="Growth"
             description="We're committed to helping players develop their skills and love for the game."
-            image="/growth-value.jpg"
+            image="/event-hero.jpg"
           />
           <ValueCard 
             title="Fun"
             description="Above all, we believe in making Roundnet enjoyable for everyone involved."
-            image="/fun-value.jpg"
+            image="/contact-hero.jpg"
           />
         </div>
       </section>

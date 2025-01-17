@@ -1,16 +1,16 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-blue text-white">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-primary-yellow font-bold text-xl">RoundnetNS</h3>
-            <p className="text-sm mt-2">Growing the sport of roundnet in Nova Scotia</p>
+    <footer className="bg-secondary-blue text-white">
+      <div className="max-w-7xl mx-auto md:px-14 px-4 py-6">
+        <div className="flex flex-row gap-2 justify-center items-center">
+          <div className=" md:mb-0 text-sm">
+            <p>© 2023 RoundnetNS. All rights reserved.</p>
           </div>
           
-          <div className="flex space-x-6">
+          <div className="md:absolute right-14 flex gap-2">
             <Link 
               href="https://instagram.com/roundnetns" 
               target="_blank"

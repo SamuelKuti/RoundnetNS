@@ -23,7 +23,7 @@ const ContactInfo = ({ title, info, icon, index }) => (
 );
 
 export default function Contact() {
-  const [formStatus, setFormStatus] = useState('');
+  const [formStatus, setFormStatus] = useState('idle');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -36,43 +36,24 @@ export default function Contact() {
   };
 
   return (
-    <motion.div 
-      className="py-20"
-      initial="initial"
-      animate="animate"
-      variants={{
-        animate: {
-          transition: {
-            staggerChildren: 0.1
-          }
-        }
-      }}
-    >
-      {/* Hero Section */}
+    <div className="min-h-screen">
       <motion.div 
-        className="relative h-[40vh] mb-12"
-        variants={fadeInUp}
+        className="relative h-[60vh]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
         <Image
           src="/contact-hero.jpg"
           alt="Contact us"
           fill
           className="object-cover"
+          priority
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 h-full flex flex-col justify-center items-center px-4">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-white mb-6 text-center"
-            variants={fadeInUp}
-          >
-            Get in Touch
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-white text-center max-w-2xl"
-            variants={fadeInUp}
-          >
-            Have questions? We'd love to hear from you.
-          </motion.p>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold mt-16 text-white text-center">
+            Contact Us
+          </h1>
         </div>
       </motion.div>
 
@@ -80,7 +61,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div 
-            className="bg-white p-8 rounded-lg shadow-lg"
+            className="bg-white md:mb-6 p-8 rounded-lg shadow-lg"
             variants={fadeInUp}
           >
             <h2 className="text-2xl font-bold text-primary-blue mb-6">Send us a Message</h2>
@@ -110,14 +91,14 @@ export default function Contact() {
               </motion.div>
               <motion.button
                 type="submit"
-                className="w-full bg-primary-yellow text-primary-blue font-bold py-3 rounded-full relative"
+                className="w-full bg-primary-yellow text-primary-gray font-bold py-3 rounded-full relative"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-gray" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -146,7 +127,7 @@ export default function Contact() {
           {/* Contact Information */}
           <div>
             <motion.div 
-              className="grid gap-6 mb-8"
+              className="grid gap-6 mb-8 "
               variants={{
                 animate: {
                   transition: {
@@ -157,7 +138,7 @@ export default function Contact() {
             >
               <ContactInfo
                 title="Email Us"
-                info="info@roundnetns.com"
+                info="roundnetns@gmail.com"
                 icon="✉️"
                 index={0}
               />
@@ -175,11 +156,11 @@ export default function Contact() {
               />
             </motion.div>
             <motion.div 
-              className="relative overflow-hidden rounded-lg h-64"
+              className="relative overflow-hidden mb-4 md:mb-6 rounded-lg h-64"
               variants={fadeInUp}
             >
               <Image
-                src="/location-map.jpg"
+                src="/about-hero.jpg"
                 alt="Our location"
                 fill
                 className="object-cover"
@@ -200,6 +181,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 } 

@@ -1,0 +1,164 @@
+/* Calendar Container */
+.fc {
+  font-family: inherit;
+}
+
+/* Header Toolbar */
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fc .fc-toolbar-chunk {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Move all buttons to left chunk */
+.fc .fc-toolbar-chunk:first-child {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Hide center chunk */
+.fc .fc-toolbar-chunk:nth-child(2) {
+  display: none;
+}
+
+/* Title styling (right chunk) */
+.fc .fc-toolbar-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #1F2937;
+  text-align: right;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .fc .fc-toolbar.fc-header-toolbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* .fc .fc-toolbar-chunk:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  } */
+
+  /* View buttons container */
+  .fc .fc-toolbar-chunk:first-child .fc-button-group:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .fc-button-group {
+    margin-left: 0 !important;
+  }
+
+  /* Navigation buttons container */
+  .fc .fc-toolbar-chunk:first-child .fc-button-group:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  /* Today button */
+  .fc .fc-toolbar-chunk:first-child .fc-today-button {
+    width: 100%;
+  }
+  
+
+  .fc .fc-toolbar-title {
+    text-align: center;
+    font-size: 1.5rem !important;
+  }
+
+  .fc .fc-button {
+    padding: 0.35rem 0.7rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Buttons */
+.fc .fc-button {
+  border-radius: 9999px !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 600 !important;
+  margin: 0 0.25rem !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-button-primary {
+  background-color: #3B82F6 !important;
+  border: none !important;
+}
+
+/* View buttons (Month/Week) */
+.fc .fc-button-primary.fc-dayGridMonth-button,
+.fc .fc-button-primary.fc-dayGridWeek-button {
+  background-color: #1E3A8A !important; /* primary-darkblue */
+}
+
+.fc .fc-toolbar-chunk:first-child .fc-today-button {
+  background-color: #1E3A8A !important;
+}
+
+.fc .fc-button-primary.fc-dayGridMonth-button:hover,
+.fc .fc-button-primary.fc-dayGridWeek-button:hover {
+  background-color: #1e40af !important; /* slightly lighter */
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #2563EB !important;
+}
+
+.fc .fc-button-primary:disabled {
+  background-color: #93C5FD !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: #1e40af !important;
+  border: none !important;
+}
+
+/* Calendar Grid */
+.fc .fc-daygrid-day-frame {
+  min-height: 70px !important;
+}
+
+.fc-theme-standard td, 
+.fc-theme-standard th {
+  border-color: #E5E7EB !important;
+}
+
+/* Today highlight */
+.fc .fc-day-today {
+  background-color: #F3F4F6 !important;
+}
+
+/* Event styling */
+.fc-event {
+  border-radius: 4px !important;
+  padding: 2px 4px !important;
+  font-size: 0.875rem !important;
+}
+
+.fc-daygrid-event {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+} 

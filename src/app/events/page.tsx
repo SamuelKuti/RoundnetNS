@@ -29,80 +29,102 @@ const TabButton = ({ active, children, onClick }) => (
   </motion.button>
 );
 
-const EventCard = ({ title, date, location, description, registrationOpen, image, index }) => (
-  <motion.div 
-    className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-    variants={{
-      initial: { opacity: 0, y: 50 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: -50 }
-    }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-  >
-    <div className="relative h-48 overflow-hidden">
-      <Image
-        src={image || '/event-default.jpg'}
-        alt={title}
-        fill
-        className="object-cover transform hover:scale-110 transition-transform duration-700"
-      />
-      {registrationOpen && (
+const EventCard = ({ title, date, location, description, status, image, index }) => {
+  // Helper function to get status styles
+  const getStatusStyles = (status) => {
+    switch (status) {
+      case 'open':
+        return {
+          bg: 'bg-green-500',
+          text: 'Registration Open'
+        };
+      case 'coming':
+        return {
+          bg: 'bg-orange-500',
+          text: 'Coming Soon'
+        };
+      case 'closed':
+        return {
+          bg: 'bg-red-500',
+          text: 'Registration Closed'
+        };
+      default:
+        return {
+          bg: 'bg-gray-500',
+          text: 'Status Unknown'
+        };
+    }
+  };
+
+  const statusStyles = getStatusStyles(status);
+
+  return (
+    <motion.div 
+      className="bg-white md:mx-0 mx-4 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      variants={{
+        initial: { opacity: 0, y: 50 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -50 }
+      }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          src={image || '/event-default.jpg'}
+          alt={title}
+          fill
+          className="object-cover transform hover:scale-110 transition-transform duration-700"
+        />
         <div className="absolute top-4 right-4">
           <motion.span 
-            className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+            className={`${statusStyles.bg} text-white px-3 py-1 rounded-full text-sm font-semibold`}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Registration Open
+            {statusStyles.text}
           </motion.span>
         </div>
-      )}
-    </div>
-    <div className="p-6">
-      <h3 className="text-xl font-bold text-primary-blue mb-3">{title}</h3>
-      <div className="space-y-2 mb-4">
-        <p className="flex items-center text-gray-600">
-          <span className="mr-2">📅</span> {date}
-        </p>
-        <p className="flex items-center text-gray-600">
-          <span className="mr-2">📍</span> {location}
-        </p>
       </div>
-      <p className="text-gray-600 mb-4">{description}</p>
-      {registrationOpen && (
-        <motion.button 
-          className="w-full bg-primary-yellow text-primary-blue font-bold py-2 rounded-full"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Register Now
-        </motion.button>
-      )}
-    </div>
-  </motion.div>
-);
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-primary-blue mb-3">{title}</h3>
+        <div className="space-y-2 mb-4">
+          <p className="flex items-center text-gray-600">
+            <span className="mr-2">📅</span> {date}
+          </p>
+          <p className="flex items-center text-gray-600">
+            <span className="mr-2">📍</span> {location}
+          </p>
+        </div>
+        <p className="text-gray-600 mb-4">{description}</p>
+        {status === 'open' && (
+          <motion.button 
+            className="w-full bg-primary-yellow text-primary-gray font-bold py-2 rounded-full"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Register Now
+          </motion.button>
+        )}
+      </div>
+    </motion.div>
+  );
+};
 
 export default function Events() {
   const [selectedTab, setSelectedTab] = useState('upcoming');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleTabChange = async (tab) => {
-    setIsLoading(true);
+  const handleTabChange = (tab) => {
     setSelectedTab(tab);
-    // Simulate loading delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    setIsLoading(false);
   };
 
   return (
-    <div className="py-20 px-4">
-      {/* Hero Section with Parallax */}
+    <div className="min-h-screen">
       <motion.div 
-        className="relative h-[40vh] mb-12"
-        initial="initial"
-        animate="animate"
-        variants={fadeIn}
+        className="relative h-[70vh]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
         <Image
           src="/events-hero.jpg"
@@ -111,19 +133,15 @@ export default function Events() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <motion.div 
-          className="relative z-10 h-full flex flex-col justify-center items-center text-white"
-          variants={slideUp}
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Roundnet Events</h1>
-          <p className="text-xl text-center max-w-2xl">
-            Join us for tournaments, practice sessions, and community gatherings
-          </p>
-        </motion.div>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl mt-16 font-bold text-white text-center">
+            Events & Tournaments
+          </h1>
+        </div>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl my-6 mx-auto">
         {/* Tab Navigation */}
         <motion.div 
           className="flex justify-center mb-8"
@@ -175,36 +193,37 @@ export default function Events() {
               {selectedTab === 'upcoming' ? (
                 <>
                   <EventCard 
-                    title="Summer Kickoff Tournament"
-                    date="June 15, 2024"
-                    location="Halifax Commons"
-                    description="Join us for our season opening tournament! All skill levels welcome."
-                    registrationOpen={true}
-                    image="/tournament-1.jpg"
+                    title="Atlantic Roundnet Tournament"
+                    date="June 15, 2025"
+                    location="Halifax Commons, NS"
+                    description="Join us for the Atlantic stop of the Roundnet Canada series."
+                    status="open"
+                    image="/square-logo.jpg"
                     index={0}
                   />
                   <EventCard 
-                    title="Weekly Practice Session"
-                    date="Every Sunday"
-                    location="Point Pleasant Park"
-                    description="Regular practice sessions for all members. Equipment provided."
-                    registrationOpen={true}
-                    image="/practice-1.jpg"
+                    title="Coming Soon"
+                    date="TBD"
+                    location="TBD"
+                    description="Stay tuned!"
+                    status="coming"
+                    image="/net.jpg"
                     index={1}
                   />
                 </>
               ) : (
                 <>
                   <EventCard 
-                    title="Spring Championship"
-                    date="April 10, 2024"
-                    location="Dartmouth Commons"
-                    description="Congratulations to all participants in our spring tournament!"
-                    registrationOpen={false}
-                    image="/past-event-1.jpg"
-                    index={0}
+                    title="Fall Open Tournament"
+                    date="October 14, 2023"
+                    location="Halifax Commons"
+                    description="Registration is now closed."
+                    status="closed"
+                    image="/location-map.jpg"
+                    index={2}
                   />
                 </>
+                
               )}
             </motion.div>
           )}
