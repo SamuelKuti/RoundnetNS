@@ -1,5 +1,5 @@
 {
-  "name": "template-web",
+  "name": "roundnetns",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://SamuelKuti.github.io/RoundnetNS",
@@ -7,9 +7,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out",
-    "build": "next build && next export"
+    "build": "next build"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
@@ -24,7 +22,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "gh-pages": "^6.3.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

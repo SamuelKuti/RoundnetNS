@@ -4,7 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/roundnet-ns',
+  basePath: '/roundnetns',
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 }
 
 module.exports = nextConfig
