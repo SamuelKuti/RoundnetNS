@@ -1,8 +1,6 @@
 {
   "name": "roundnetns",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://SamuelKuti.github.io/RoundnetNS",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
