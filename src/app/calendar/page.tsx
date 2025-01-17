@@ -7,18 +7,18 @@ import { motion } from 'framer-motion';
 import './calendar.css'; // custom styles
 
 const events = [
-  {
-    title: 'Weekly Practice',
-    daysOfWeek: [0],
-    startTime: '14:00:00',
-    endTime: '16:00:00',
-    backgroundColor: '#0046b6', // primary-blue
-    borderColor: '#3B82F6',
-  },
+//   {
+//     title: 'Weekly Practice',
+//     daysOfWeek: [0],
+//     startTime: '14:00:00',
+//     endTime: '16:00:00',
+//     backgroundColor: '#0046b6', // primary-blue
+//     borderColor: '#3B82F6',
+//   },
   {
     title: 'Spring Tournament',
-    start: '2025-04-15T09:00:00',
-    end: '2025-04-15T17:00:00',
+    start: '2025-06-15T09:00:00',
+    end: '2025-06-15T17:00:00',
     backgroundColor: '#F59E0B', // primary-yellow
     borderColor: '#F59E0B',
   },

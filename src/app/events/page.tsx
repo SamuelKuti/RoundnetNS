@@ -198,7 +198,7 @@ export default function Events() {
                     date="June 15, 2025"
                     location="Halifax Commons, NS"
                     description="Join us for the Atlantic stop of the Roundnet Canada series."
-                    status="open"
+                    status="coming"
                     image="/square-logo.jpg"
                     index={0}
                   />

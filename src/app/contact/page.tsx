@@ -4,6 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, FormEvent } from 'react';
 import { ContactInfoProps } from '@/types';
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS
+emailjs.init('iEjVGJDq8HYfs4WU3');
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -30,9 +34,34 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setFormStatus('success');
-    setIsSubmitting(false);
+    
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const response = await emailjs.send(
+        'service_b6j03si',
+        'template_pcs3gce',
+        {
+          from_name: formData.get('name'),
+          from_email: formData.get('email'),
+          message: formData.get('message'),
+        },
+        'iEjVGJDq8HYfs4WU3'
+      );
+
+      if (response.status === 200) {
+        setFormStatus('success');
+        form.reset();
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error: any) {
+      console.error('Error:', error.message || 'Failed to send email');
+      setFormStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -70,6 +99,7 @@ export default function Contact() {
                 <label className="block text-gray-700 mb-2">Name</label>
                 <input
                   type="text"
+                  name="name"
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue"
                   required
                 />
@@ -78,6 +108,7 @@ export default function Contact() {
                 <label className="block text-gray-700 mb-2">Email</label>
                 <input
                   type="email"
+                  name="email"
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue"
                   required
                 />
@@ -85,6 +116,7 @@ export default function Contact() {
               <motion.div variants={fadeInUp}>
                 <label className="block text-gray-700 mb-2">Message</label>
                 <textarea
+                  name="message"
                   className="w-full p-3 border border-gray-300 rounded-lg h-32 focus:outline-none focus:border-primary-blue"
                   required
                 ></textarea>
@@ -118,6 +150,19 @@ export default function Contact() {
                     exit={{ opacity: 0 }}
                   >
                     Thanks for reaching out! We'll get back to you soon.
+                  </motion.p>
+                )}
+              </AnimatePresence>
+
+              <AnimatePresence>
+                {formStatus === 'error' && (
+                  <motion.p 
+                    className="text-red-600 text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Something went wrong. Please try again later.
                   </motion.p>
                 )}
               </AnimatePresence>

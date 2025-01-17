@@ -84,16 +84,16 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <NavLink href="/">Home</NavLink>
-                        <NavLink href="/events">Events</NavLink>
-                        <NavLink href="/calendar">Calendar</NavLink>
-                        <NavLink href="/about">About</NavLink>
-                        <NavLink href="/rankings">Rankings</NavLink>
-                        <NavLink href="/contact">Contact</NavLink>
+                        <NavLink href="/" onClick={handleLinkClick}>Home</NavLink>
+                        <NavLink href="/about" onClick={handleLinkClick}>About</NavLink>
+                        <NavLink href="/events" onClick={handleLinkClick}>Events</NavLink>
+                        <NavLink href="/calendar" onClick={handleLinkClick}>Calendar</NavLink>
+                        <NavLink href="/rankings" onClick={handleLinkClick}>Rankings</NavLink>
+                        <NavLink href="/contact" onClick={handleLinkClick}>Contact</NavLink>
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="md:hidden">
+                    <div className="ml-4 mt-3 md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-white hover:text-primary-yellow"
@@ -119,11 +119,12 @@ export default function Navbar() {
                             exit="closed"
                             variants={menuVariants}
                         >
-                            <div className="pb-4">
+                            <div className="ml-4 pb-4">
                                 <div className="flex flex-col space-y-4">
                                     <NavLink href="/" onClick={handleLinkClick}>Home</NavLink>
-                                    <NavLink href="/events" onClick={handleLinkClick}>Events</NavLink>
                                     <NavLink href="/about" onClick={handleLinkClick}>About</NavLink>
+                                    <NavLink href="/events" onClick={handleLinkClick}>Events</NavLink>
+                                    <NavLink href="/calendar" onClick={handleLinkClick}>Calendar</NavLink>
                                     <NavLink href="/rankings" onClick={handleLinkClick}>Rankings</NavLink>
                                     <NavLink href="/contact" onClick={handleLinkClick}>Contact</NavLink>
                                 </div>

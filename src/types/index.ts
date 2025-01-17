@@ -7,6 +7,7 @@ export interface TeamMemberProps {
   role: string;
   image: string;
   description: string;
+  instagram: string;
 }
 
 export interface ValueCardProps {

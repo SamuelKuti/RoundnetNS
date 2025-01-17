@@ -80,10 +80,9 @@ export default function Home() {
               />
             </div>
             <div className='md:block flex flex-col justify-center items-center'> 
-              <h2 className="text-3xl font-bold text-primary-blue mb-4">Join Our Weekly Sessions</h2>
+              <h2 className="text-3xl font-bold text-primary-blue mb-4">Join Our Weekly Sessions (Coming)</h2>
               <p className="text-gray-600 text-lg mb-6">
-                Whether you're new to the sport or a seasoned player, our weekly sessions 
-                are the perfect way to improve your game and meet fellow players.
+                Whether you're new to the sport or a seasoned player, our events are the perfect way to improve your game and meet fellow players.
               </p>
               <Link 
                 href="/events"
