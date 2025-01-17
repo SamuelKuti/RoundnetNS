@@ -1,13 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  basePath: '/roundnetns',
-  typescript: {
-    ignoreBuildErrors: true,
-  }
-}
+import type { NextConfig } from "next";
 
-module.exports = nextConfig
+const nextConfig: NextConfig = {
+};
+
+export default nextConfig;
