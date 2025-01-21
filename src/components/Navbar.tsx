@@ -23,6 +23,12 @@ export default function Navbar() {
 
     useEffect(() => {
         const controlNavbar = () => {
+            // Always show navbar at the top of the page
+            if (window.scrollY === 0) {
+                setVisible(true);
+                return;
+            }
+
             if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
                 setVisible(false);
             } else { // if scroll up show the navbar
