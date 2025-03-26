@@ -105,7 +105,7 @@ export default function About() {
                         },
                         {
                             name: "Jaak Reichman",
-                            role: "Assistant Events Coordinator",
+                            role: "Marketing & Events Coordinator",
                             image: "/jaak-photo.jpg",
                             description: "Organizing fun & competitive tournaments across the province.",
                             instagram: "https://www.instagram.com/jaakreichman/"
